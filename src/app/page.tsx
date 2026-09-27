@@ -546,7 +546,7 @@ export default function Home() {
       <header
         className="shrink-0 border-b border-white/10 bg-zinc-950/95"
         style={{
-          height: "calc(4.75rem + env(safe-area-inset-top))",
+          height: "calc(3.5rem + env(safe-area-inset-top))",
           paddingTop: "env(safe-area-inset-top)",
         }}
       >
@@ -562,7 +562,7 @@ export default function Home() {
             {status}
           </div>
         ) : showHint ? (
-          <div className="flex h-full flex-col items-center justify-center gap-1 px-4 text-center">
+          <div className="flex h-full flex-col items-center justify-center gap-0.5 px-4 text-center">
             <p className="flex items-center gap-2 text-base font-semibold tracking-tight text-white">
               <MiniCube className="h-5 w-5" />
               Оцвети шестте страни:
