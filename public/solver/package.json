@@ -1,0 +1,16 @@
+{
+  "name": "rubiksolver",
+  "type": "module",
+  "version": "0.1.0",
+  "license": "MIT",
+  "files": [
+    "rubiksolver_bg.wasm",
+    "rubiksolver.js",
+    "rubiksolver.d.ts"
+  ],
+  "main": "rubiksolver.js",
+  "types": "rubiksolver.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
