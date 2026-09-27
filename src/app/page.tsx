@@ -14,6 +14,7 @@ import RubiksCube, {
   type RubiksCubeHandle,
 } from "@/components/RubiksCube";
 import InstructionsPanel from "@/components/InstructionsPanel";
+import MiniCube from "@/components/MiniCube";
 import SideNames from "@/components/SideNames";
 import {
   FACE_CODE,
@@ -549,7 +550,14 @@ export default function Home() {
           paddingTop: "env(safe-area-inset-top)",
         }}
       >
-        {status !== null ? (
+        {inInstructions ? (
+          <div className="flex h-full items-center justify-center gap-2.5 px-4">
+            <MiniCube className="h-7 w-7" />
+            <h1 className="text-lg font-semibold tracking-tight text-white">
+              Инструкции и настройки
+            </h1>
+          </div>
+        ) : status !== null ? (
           <div className="flex h-full items-center justify-center px-4 text-center text-xs font-medium text-zinc-300">
             {status}
           </div>

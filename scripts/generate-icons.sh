@@ -43,8 +43,8 @@ cat > "$tmp/og.svg" <<SVG
 $cube
   </svg>
   <text x="560" y="290" font-family="Geist" font-weight="700" font-size="78" fill="#ffffff">Кубът на Рубик</text>
-  <text x="562" y="360" font-family="Geist" font-size="34" fill="#a1a1aa">Оцвети своя куб и виж как</text>
-  <text x="562" y="408" font-family="Geist" font-size="34" fill="#a1a1aa">да го подредиш стъпка по стъпка.</text>
+  <text x="562" y="360" font-family="Geist" font-size="34" fill="#a1a1aa">Виж как да наредиш куба</text>
+  <text x="562" y="408" font-family="Geist" font-size="34" fill="#a1a1aa">на Рубик стъпка по стъпка.</text>
 </svg>
 SVG
 rsvg-convert -w 1200 -h 630 "$tmp/og.svg" -o src/app/opengraph-image.png

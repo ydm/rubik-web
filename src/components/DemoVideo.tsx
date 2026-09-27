@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { pickInk } from "@/components/RubiksCube";
 import { withBasePath } from "@/lib/site";
 
 /**
@@ -12,11 +13,18 @@ import { withBasePath } from "@/lib/site";
  */
 export default function DemoVideo({
   name,
+  step = 0,
+  title,
   caption,
+  sticker = "#3f3f46",
 }: {
   /** File name without extension: `<name>.webm`, `.mp4` and `.jpg`. */
   name: string;
+  step: number;
+  title: string;
   caption: string;
+  /** The step badge's colour, e.g. the layer's face colour. */
+  sticker?: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -47,7 +55,7 @@ export default function DemoVideo({
 
   const src = withBasePath(`/instructions/${name}`);
   return (
-    <figure className="mx-auto mt-4 w-60">
+    <figure className="mx-auto mt-6 w-full max-w-72">
       <video
         ref={videoRef}
         muted
@@ -55,15 +63,26 @@ export default function DemoVideo({
         playsInline
         preload="none"
         poster={`${src}.jpg`}
-        aria-label={caption}
+        aria-label={`${step}. ${title}: ${caption}`}
         className="w-full rounded-2xl border border-white/10 bg-black"
         style={{ aspectRatio: "390 / 844" }}
       >
         <source src={`${src}.webm`} type="video/webm" />
         <source src={`${src}.mp4`} type="video/mp4" />
       </video>
-      <figcaption className="mt-2 text-center text-xs leading-5 text-zinc-400">
-        {caption}
+      <figcaption className="mt-3 flex gap-3 text-[15px] leading-6 text-zinc-300">
+        {step > 0 && (
+          <span
+            aria-hidden="true"
+            className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md text-sm font-bold ring-1 ring-white/15"
+            style={{ background: sticker, color: pickInk(sticker) }}
+          >
+            {step}
+          </span>
+        )}
+        <span>
+          <b className="font-semibold text-white">{title}:</b> {caption}
+        </span>
       </figcaption>
     </figure>
   );
