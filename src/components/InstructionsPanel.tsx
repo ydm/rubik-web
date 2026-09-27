@@ -27,8 +27,8 @@ const HEX = Object.fromEntries(FACE_COLOUR_OPTIONS.map((o) => [o.id, o.hex]));
 /** The project's source code, shown in the Лиценз section. A repository with
  *  no `url` yet is listed without a link. */
 const REPOSITORIES: { name: string; url: string }[] = [
-  { name: "Уеб приложението", url: "github.com/ydm/rubik-web" },
-  { name: "Решаващата програма (Rust)", url: "github.com/ydm/rubik-solver" },
+  { name: "Уеб приложението", url: "https://github.com/ydm/rubik-web" },
+  { name: "Решаващата програма (Rust)", url: "https://github.com/ydm/rubik-solver" },
 ];
 
 const MIT_LICENSE_URL = "https://opensource.org/license/mit";
