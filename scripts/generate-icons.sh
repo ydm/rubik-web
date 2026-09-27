@@ -48,7 +48,7 @@ $cube
 </svg>
 SVG
 rsvg-convert -w 1200 -h 630 "$tmp/og.svg" -o src/app/opengraph-image.png
-printf '%s' "Кубът на Рубик — подреден куб до надпис „Оцвети своя куб и виж как да го подредиш стъпка по стъпка.“" \
+printf '%s' "Кубът на Рубик — подреден куб до надпис „Виж как да наредиш куба на Рубик стъпка по стъпка.“" \
   > src/app/opengraph-image.alt.txt
 
 echo "icons regenerated"

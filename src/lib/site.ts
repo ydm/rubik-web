@@ -4,7 +4,7 @@
 export const SITE_NAME = "Кубът на Рубик";
 export const SITE_SHORT_NAME = "Рубик";
 export const SITE_DESCRIPTION =
-  "Оцвети своя куб и виж как да го подредиш стъпка по стъпка.";
+  "Виж как да наредиш куба на Рубик стъпка по стъпка.";
 
 /** The app's header and tab bar colour (zinc-950), used for the browser UI. */
 export const THEME_COLOR = "#09090b";
@@ -34,6 +34,8 @@ export function withBasePath(path: string): string {
 /** An absolute URL for a site path, keeping `SITE_URL`'s own sub-path
  *  (`new URL("/x", SITE_URL)` would drop it). */
 export function absoluteUrl(path: string): string {
-  const base = SITE_URL.href.endsWith("/") ? SITE_URL.href : `${SITE_URL.href}/`;
+  const base = SITE_URL.href.endsWith("/")
+    ? SITE_URL.href
+    : `${SITE_URL.href}/`;
   return new URL(path.replace(/^\/+/, ""), base).toString();
 }

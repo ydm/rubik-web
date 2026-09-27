@@ -27,8 +27,11 @@ const HEX = Object.fromEntries(FACE_COLOUR_OPTIONS.map((o) => [o.id, o.hex]));
 /** The project's source code, shown in the Лиценз section. A repository with
  *  no `url` yet is listed without a link. */
 const REPOSITORIES: { name: string; url: string }[] = [
-  { name: "Уеб приложението", url: "https://github.com/ydm/rubik-web" },
-  { name: "Решаващата програма (Rust)", url: "https://github.com/ydm/rubik-solver" },
+  { name: "Уеб приложение", url: "https://github.com/ydm/rubik-web" },
+  {
+    name: "Нареждаща програма (Rust)",
+    url: "https://github.com/ydm/rubik-solver",
+  },
 ];
 
 const MIT_LICENSE_URL = "https://opensource.org/license/mit";
@@ -54,20 +57,21 @@ export default function InstructionsPanel() {
             Раздел „<b>Нареди</b>“
           </h3>
           <p className="mt-3">
-            Тук оцветяваш стикерите така, както изглежда твоят куб, и получаваш
-            ходовете, които го нареждат.
+            • Тук оцветяваш лицата така, както изглежда твоят собствен куб, и
+            получаваш ходовете, с които да го наредиш.
           </p>
           <p className="mt-3">
-            Оцветяването може да е частично, а подредените вече лица не се
+            • Оцветяването може да е частично, а подредените вече лица не се
             разместват.
           </p>
 
           <p className="mt-3">
-            Страните са <SideNames />.
+            • Страните са <SideNames />. Ако твоят куб има различни цветове,
+            отиди в настройките и промени цветовете на страните.
           </p>
 
           <p className="mt-3">
-            В решението{" "}
+            • В решението
             <>
               &nbsp;
               <a type="button" className={`font-mono ${stepBoxClass(false)}`}>
@@ -87,50 +91,51 @@ export default function InstructionsPanel() {
           </p>
 
           <p className="mt-3">
-            Използвай раздела, за да научиш, разбереш и запомниш формулите за
-            подреждане във всяка ситуация.
+            • Използвай раздела, за да научиш, разбереш и запомниш оптималните
+            формули за всяка ситуация.
           </p>
 
           <p className="mt-3">
-            Ако си начинаещ и тепърва се учиш да редиш кубчето на Рубик,
-            препоръчваме следния стандартен подход:{" "}
-            <span className="font-semibold text-zinc-100">
-              бял кръст → бели ъгли → среден слой → жълт кръст → жълти ъгли
-            </span>
-            :
+            • Ако си начинаещ и тепърва учиш куба на Рубик, препоръчваме
+            следната последователност:
+            <>
+              &nbsp;
+              <span className="font-semibold text-zinc-100">
+                бял кръст → бели ъгли → среден слой → жълт кръст → жълти ъгли
+              </span>
+            </>
+            . Виж примерите:
           </p>
 
-          <p className="mt-3 font-semibold text-zinc-100">1. Бял кръст</p>
           <DemoVideo
             name="white-cross"
-            caption="Оцвети и подреди четирите бели ръба"
+            caption="1. Бял кръст: оцвети лицата на четирите бели ръба и натисни бутона „Нареди“"
           />
 
-          <p className="mt-3 font-semibold text-zinc-100">2. Бели ъгли</p>
           <DemoVideo
             name="white-corners"
-            caption="Оцвети и подреди трите стикера на всеки бял ъгъл"
+            caption="2. Бели ъгли: оцвети лицата на четирите бели ъгъла"
           />
 
-          <p className="mt-3 font-semibold text-zinc-100">
-            3. Четирите ръба на средния слой
-          </p>
           <DemoVideo
             name="middle-edges"
-            caption="Оцвети и подреди четирите ръба на средния слой"
+            caption="3. Среден слой: оцвети лицата на четирите средни ръба"
           />
 
-          <p className="mt-3 font-semibold text-zinc-100">4. Жълт кръст</p>
           <DemoVideo
             name="yellow-cross"
-            caption="Оцвети и подреди четирите жълти ръба"
+            caption="4. Жълт кръст: оцвети четирите жълти ръба"
           />
 
-          <p className="mt-3 font-semibold text-zinc-100">5. Жълти ъгли</p>
           <DemoVideo
             name="yellow-corners"
-            caption="Оцвети и подреди трите стикера на всеки долен ъгъл"
+            caption="5: Жълти ъгли: оцвети лицата на последните четири блокчета"
           />
+
+          <p className="mt-3">
+            • Всяка една от тези стъпки може да се прави и поотделно – блокче
+            след блокче.
+          </p>
 
           <h3 className="mt-4 font-semibold text-zinc-100">
             Раздел „<b>Мисия</b>“
@@ -139,8 +144,10 @@ export default function InstructionsPanel() {
             В раздел „<b>Мисия</b>“ всеки ден получаваш нов разбъркан куб.
             Задачата ти е да го нареди без чужда помощ.
           </p>
-          <p className="mt-3 text-zinc-500">Пълните инструкции предстоят.</p>
         </section>
+
+        <br />
+        <hr />
 
         <section aria-labelledby="settings-heading" className="mt-10">
           <h2
@@ -225,48 +232,61 @@ export default function InstructionsPanel() {
           </button>
         </section>
 
+        <br />
+        <hr />
+
         <section aria-labelledby="license-heading" className="mt-10">
           <h2 id="license-heading" className="text-xl font-semibold text-white">
             Лиценз
           </h2>
           <p className="mt-3">
-            Този проект е свободен софтуер с отворен код, разпространяван под{" "}
-            <a
-              href={MIT_LICENSE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sky-400 underline underline-offset-2"
-            >
-              лиценза MIT
-            </a>
+            Този проект е свободен софтуер с отворен код, разпространяван под
+            <>
+              &nbsp;
+              <a
+                href={MIT_LICENSE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-400 underline underline-offset-2"
+              >
+                лиценза MIT
+              </a>
+            </>
             . Можеш свободно да го използваш, променяш и споделяш.
           </p>
           <p className="mt-3">
-            Направен е с любов за децата и възрастните, които учат кубчето на
-            Рубик.
+            Направен е с любов за всички, които учат кубчето на Рубик.
           </p>
           <p className="mt-3">Сорс кодът е в GitHub:</p>
           <ul className="mt-2 list-disc pl-5">
             {REPOSITORIES.map(({ name, url }) => (
               <li key={name}>
-                {url ? (
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sky-400 underline underline-offset-2"
-                  >
-                    {name}
-                  </a>
-                ) : (
-                  <>
-                    {name}{" "}
-                    <span className="text-zinc-500">— връзката предстои</span>
-                  </>
-                )}
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sky-400 underline underline-offset-2"
+                >
+                  {name}
+                </a>
               </li>
             ))}
           </ul>
+          <p className="mt-3">
+            За бъгове, обратна връзка и предложения за подобрения:
+            <>
+              &nbsp;
+              <a
+                href="https://github.com/ydm/rubik-web/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-400 underline underline-offset-2"
+              >
+                клик
+              </a>
+            </>
+            .
+          </p>
         </section>
       </article>
     </div>

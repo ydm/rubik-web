@@ -26,13 +26,18 @@ describe("solver statuses", () => {
 
 describe("solverErrorMessage", () => {
   const error = (status: string) =>
-    new SolverError(status as never, Status[status as keyof typeof Status] as number);
+    new SolverError(
+      status as never,
+      Status[status as keyof typeof Status] as number,
+    );
 
   it("explains what the player painted wrong", () => {
     expect(solverErrorMessage(error("PartialPiece"))).toBe(
       "Едно кубче е оцветено само отчасти — оцвети всичките му стикери или нито един.",
     );
-    expect(solverErrorMessage(error("NotSolvable"))).toMatch(/^Такъв куб не може/);
+    expect(solverErrorMessage(error("NotSolvable"))).toMatch(
+      /^Такъв куб не може/,
+    );
   });
 
   it("marks the app's own mistakes as internal, with the code", () => {
@@ -43,11 +48,13 @@ describe("solverErrorMessage", () => {
 
   it("reports a status newer than the app by its code", () => {
     expect(solverErrorMessage(new SolverError("Unknown", 99))).toBe(
-      "Решаващата програма върна непозната грешка (код 99).",
+      "Нареждащата програма върна непозната грешка (код 99).",
     );
   });
 
   it("reports a solver that never loaded", () => {
-    expect(solverErrorMessage(new TypeError("network down"))).toMatch(/не се зареди/);
+    expect(solverErrorMessage(new TypeError("network down"))).toMatch(
+      /не се зареди/,
+    );
   });
 });

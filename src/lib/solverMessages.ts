@@ -21,8 +21,7 @@ export const SOLVER_MESSAGES: Record<SolverStatus, string> = {
   WildcardInCube: INTERNAL_ERROR,
   NotSolvable:
     "Такъв куб не може да се получи с въртене — провери оцветяването: по 9 стикера от всеки цвят и само истински кубчета.",
-  WrongCentre:
-    "Цветът на център е сгрешен — центровете никога не се местят.",
+  WrongCentre: "Цветът на център е сгрешен — центровете никога не се местят.",
   PartialPiece:
     "Едно кубче е оцветено само отчасти — оцвети всичките му стикери или нито един.",
   NotAPiece:
@@ -61,10 +60,10 @@ export const SOLVER_MESSAGES: Record<SolverStatus, string> = {
 export function solverErrorMessage(err: unknown): string {
   if (!(err instanceof SolverError)) {
     // The worker or the WASM never loaded (e.g. no connection).
-    return "Решаващата програма не се зареди — провери връзката и опитай пак.";
+    return "Нареждащата програма не се зареди — провери връзката и опитай пак.";
   }
   if (err.status === "Unknown") {
-    return `Решаващата програма върна непозната грешка (код ${err.code}).`;
+    return `Нареждащата програма върна непозната грешка (код ${err.code}).`;
   }
   const text = SOLVER_MESSAGES[err.status];
   return text === INTERNAL_ERROR ? `${text} (код ${err.code}).` : text;
