@@ -1,7 +1,6 @@
 "use client";
 
 import DemoVideo from "@/components/DemoVideo";
-import MiniCube from "@/components/MiniCube";
 import { FACE_LABELS, pickInk, type FaceKey } from "@/components/RubiksCube";
 import SideNames from "@/components/SideNames";
 import StepBox from "@/components/StepBox";
@@ -39,8 +38,8 @@ const REPOSITORIES: { name: string; url: string }[] = [
 
 const MIT_LICENSE_URL = "https://opensource.org/license/mit";
 
-/** Neutral grey for a sticker that stands for no face (the middle layer). */
-const GREY = "#3f3f46";
+/** Color of the middle layer. */
+const MIDDLE = "#00923f";
 
 const linkClass =
   "font-medium text-sky-400 underline decoration-sky-400/40 underline-offset-4 active:text-sky-300";
@@ -68,7 +67,7 @@ function Card({
       >
         <span
           aria-hidden="true"
-          className="h-4 w-4 shrink-0 rounded-[4px] ring-1 ring-white/20"
+          className="h-4 w-4 shrink-0 rounded-sm ring-1 ring-white/20"
           style={{ background: sticker }}
         />
         {title}
@@ -118,7 +117,7 @@ export default function InstructionsPanel() {
   const method: { name: string; sticker: string }[] = [
     { name: "бял кръст", sticker: white },
     { name: "бели ъгли", sticker: white },
-    { name: "среден слой", sticker: GREY },
+    { name: "среден слой", sticker: MIDDLE },
     { name: "жълт кръст", sticker: yellow },
     { name: "жълти ъгли", sticker: yellow },
   ];
@@ -168,7 +167,7 @@ export default function InstructionsPanel() {
                 <span className="flex items-center gap-2 rounded-full border border-white/15 bg-zinc-800/80 py-1 pl-1.5 pr-3">
                   <span
                     aria-hidden="true"
-                    className="flex h-5 w-5 items-center justify-center rounded-[4px] text-xs font-bold"
+                    className="flex h-5 w-5 items-center justify-center rounded-sm text-xs font-bold"
                     style={{ background: sticker, color: pickInk(sticker) }}
                   >
                     {i + 1}
@@ -203,7 +202,7 @@ export default function InstructionsPanel() {
           <DemoVideo
             name="middle-edges"
             step={3}
-            sticker={GREY}
+            sticker={MIDDLE}
             title="Среден слой"
             caption="оцвети лицата на четирите средни ръба"
           />
@@ -360,10 +359,6 @@ export default function InstructionsPanel() {
             .
           </p>
         </Card>
-
-        <div className="flex justify-center pt-2">
-          <MiniCube className="h-8 w-8 opacity-60" />
-        </div>
       </article>
     </div>
   );

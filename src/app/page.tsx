@@ -562,11 +562,14 @@ export default function Home() {
             {status}
           </div>
         ) : showHint ? (
-          <div className="flex h-full items-center justify-center px-4 text-center text-xs leading-5 text-zinc-400">
-            <span>
+          <div className="flex h-full flex-col items-center justify-center gap-1 px-4 text-center">
+            <p className="flex items-center gap-2 text-base font-semibold tracking-tight text-white">
+              <MiniCube className="h-5 w-5" />
               Оцвети шестте страни:
-              <br /> <SideNames />
-            </span>
+            </p>
+            <p className="text-[13px] leading-5 text-zinc-300">
+              <SideNames />
+            </p>
           </div>
         ) : solving && steps.length > 0 ? (
           <div className="flex h-full items-center px-2">
